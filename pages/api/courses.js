@@ -1,5 +1,3 @@
-// pages/api/courses.js
-// This file should be placed in: pages/api/courses.js
 
 const coursesDatabase = [
   {
@@ -7,14 +5,14 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['society', 'social', 'community', 'culture', 'behavior', 'research', 'people', 'groups', 'human', 'development', 'issues', 'welfare'],
-    description: 'Study social behavior, institutions, and community dynamics'
+    description: 'The Bachelor of Arts in Sociology program exemplifies academic excellence grounded in theory and practice. It provides a strong foundation in sociological analysis, enabling students to understand and address complex social realities in Caraga and the broader Philippines. The program offers a rich learning experience that combines classroom instruction, field research, and community engagement, fostering critical thinking, effective communication, and social responsibility. Graduates pursue meaningful careers in community development, social research, policy analysis, education, and organizational management. The CSU Department of Sociology collaborates with government agencies and development organizations to produce evidence-based studies and policy recommendations that contribute to social development in the Caraga Region and beyond.'
   },
   {
     name: 'BACHELOR OF ELEMENTARY EDUCATION',
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['teaching', 'children', 'education', 'learning', 'elementary', 'classroom', 'students', 'pedagogy', 'curriculum', 'instruction', 'kids', 'school'],
-    description: 'Train to teach elementary school students'
+    description: 'The Bachelor of Elementary Education program is designed to prepare its students to become competent, upright, and service-oriented elementary school teachers. This program is Level IV Re-Accredited by AACCUP, a mark of excellence in instruction, research, and community engagement. Students enjoy a dynamic learning experience enriched by expert faculty, hands-on teaching practice, and a supportive academic environment. Graduates of the program are highly sought-after, with career opportunities in both public and private schools, local and international educational institutions, and community-based learning programs. The program proudly celebrates six LEPT topnotchers, a Top 9 national ranking in the recent Licensure Exam for Professional Teachers, and the prestigious EQUATE Award from CHED, a testament to its commitment to quality and innovation in teacher education.'
   },
   {
     name: 'BACHELOR OF SCIENCE IN ACCOUNTANCY',
@@ -28,7 +26,7 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['agriculture', 'engineering', 'farming', 'machinery', 'irrigation', 'technology', 'systems', 'design', 'rural', 'food', 'production', 'automation'],
-    description: 'Design agricultural systems and machinery'
+    description: 'Bachelor of Science in Agricultural and Biosystems Engineering blends engineering fundamentals with agricultural science to create technologies that improve productivity, sustainability, and livelihoods in rural communities. Students get hands-on experience in farm machinery design, post-harvest systems, and energy recovery through lab work, field projects, and community extension – ideal for learners who like applied, impact-driven work. Graduates are sought after by agribusiness firms, equipment manufacturers, government agencies (agriculture and rural development), and NGOs focused on sustainable farming and food systems. Recent program strengths include active researcher engagement in regional mechanization and energy recovery projects and collaborations that connect students to real community problems.'
   },
   {
     name: 'BACHELOR OF SCIENCE IN AGRICULTURE',
