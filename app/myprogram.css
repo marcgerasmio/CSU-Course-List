@@ -1,0 +1,323 @@
+.myprogram-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background-image: url('/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.myprogram-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 0;
+}
+
+.myprogram-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.myprogram-loading {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.myprogram-loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #14532d;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.myprogram-loading p {
+  color: #4b5563;
+  font-size: 1.125rem;
+}
+
+.myprogram-error {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.myprogram-error-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.myprogram-error h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.myprogram-error p {
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.myprogram-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.myprogram-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.myprogram-icon {
+  color: #14532d;
+  margin-right: 0.75rem;
+}
+
+.myprogram-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0;
+}
+
+.myprogram-subtitle {
+  color: #4b5563;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.myprogram-course-count {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.myprogram-input-section {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin: 0 auto 2rem;
+  max-width: 800px;
+  border: 2px solid #003300;
+}
+
+.myprogram-input-group {
+  margin-bottom: 1rem;
+}
+
+
+.myprogram-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.myprogram-input-wrapper {
+  position: relative;
+}
+
+.myprogram-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.myprogram-input:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.myprogram-clear-btn {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.myprogram-clear-btn:hover {
+  color: #4b5563;
+}
+
+.myprogram-button-group {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.myprogram-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.myprogram-btn-primary {
+  flex: 1;
+  background: #003300;
+  color: white;
+}
+
+.myprogram-btn-primary:hover {
+  background: #15803d;
+}
+
+.myprogram-btn-secondary {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #d1d5db;
+  background: white;
+  color: #374151;
+}
+
+.myprogram-btn-secondary:hover {
+  background: #f9fafb;
+}
+
+.myprogram-results {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 2px solid #003300;
+}
+
+.myprogram-results-header {
+  margin-bottom: 1.5rem;
+}
+
+.myprogram-sparkle-icon {
+  color: #14532d;
+}
+
+.myprogram-results-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0;
+}
+
+.myprogram-no-results {
+  text-align: center;
+  padding: 3rem 0;
+  color: #6b7280;
+  font-size: 1.125rem;
+}
+
+.myprogram-course-card {
+  position: relative;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  padding-top: 2.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+}
+
+.myprogram-course-card:hover {
+  border-color: #818cf8;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.myprogram-course-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0 0 0.5rem 0;
+  padding-right: 2rem;
+}
+
+.myprogram-course-description {
+  color: #4b5563;
+  margin: 0 0 0.75rem 0;
+}
+
+.myprogram-course-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.myprogram-course-campus {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #14532d;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.myprogram-keyword-tag {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .myprogram-container {
+    padding: 1rem;
+  }
+  
+  .myprogram-title {
+    font-size: 2rem;
+  }
+  
+  .myprogram-button-group {
+    flex-direction: column;
+  }
+  
+  .myprogram-course-card {
+    padding-top: 3rem;
+  }
+  
+  .myprogram-course-name {
+    font-size: 1.1rem;
+  }
+}

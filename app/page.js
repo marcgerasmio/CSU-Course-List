@@ -1,95 +1,399 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 
-export default function Home() {
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Search, RefreshCw, BookOpen, Sparkles, CheckCircle,  X } from 'lucide-react';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+
+export default function MyProgramRecommender() {
+  const [keywords, setKeywords] = useState(['', '', '']);
+  const [courses, setCourses] = useState([]);
+  const [recommendations, setRecommendations] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [hasSearched, setHasSearched] = useState(false);
+    const [currentSlide, setCurrentSlide] = useState(0);
+  
+  // Array of images - add as many as you want
+  const images = [
+    { src: "pic1.webp", alt: "Golden Paddler 1" },
+    { src: "pic2.webp", alt: "Golden Paddler 2" },
+    { src: "pic3.webp", alt: "Golden Paddler 3" },
+    { src: "pic4.webp", alt: "Golden Paddler 4" },
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  const API_URL = 'https://csu-course-list.vercel.app/api/courses';
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  const fetchCourses = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(API_URL);
+
+      if (!response.ok) throw new Error(`API returned status code: ${response.status}`);
+
+      const data = await response.json();
+      if (!data.success || !data.data) throw new Error('Invalid data format from API');
+
+      setCourses(data.data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch courses');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleKeywordChange = (index, value) => {
+    const newKeywords = [...keywords];
+    newKeywords[index] = value;
+    setKeywords(newKeywords);
+  };
+
+  const clearKeyword = (index) => handleKeywordChange(index, '');
+
+  const calculateRecommendations = () => {
+    const filledKeywords = keywords.filter(k => k.trim() !== '').map(k => k.toLowerCase().trim());
+    if (filledKeywords.length === 0) {
+      setRecommendations([]);
+      setHasSearched(true);
+      return;
+    }
+
+    const scoredCourses = courses.map(course => {
+      let score = 0;
+      filledKeywords.forEach(keyword => {
+        course.keywords.forEach(kw => {
+          if (kw.includes(keyword) || keyword.includes(kw)) score += 2;
+        });
+        if (course.name.toLowerCase().includes(keyword)) score += 3;
+        if (course.description.toLowerCase().includes(keyword)) score += 1;
+      });
+      return { ...course, matchScore: score };
+    });
+
+    const filtered = scoredCourses
+      .filter(course => course.matchScore > 0)
+      .sort((a, b) => b.matchScore - a.matchScore)
+      .slice(0, 6);
+
+    setRecommendations(filtered);
+    setHasSearched(true);
+  };
+
+  const handleReset = () => {
+    setKeywords(['', '', '']);
+    setRecommendations([]);
+    setHasSearched(false);
+  };
+
+  if (loading)
+    return (
+      <div className="min-h-screen p-8 bg-center bg-fixed bg-no-repeat relative" style={{backgroundImage: "url('/bg.jpg')"}}>
+        <div className="absolute inset-0 bg-white/85 z-0"></div>
+        <div className="relative z-10 text-center py-16 px-8">
+          <div className="w-12 h-12 border-4 border-gray-200 border-t-green-900 rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600 text-lg">Loading courses...</p>
+        </div>
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="min-h-screen p-8 bg-cover bg-center bg-fixed bg-no-repeat relative" style={{backgroundImage: "url('/bg.jpg')"}}>
+        <div className="absolute inset-0 bg-white/85 z-0"></div>
+        <div className="relative z-10 text-center py-16 px-8 max-w-lg mx-auto">
+          <div className="text-6xl mb-4">⚠️</div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Error Loading Courses</h2>
+          <p className="text-gray-600 mb-6">{error}</p>
+          <button
+            onClick={fetchCourses}
+            className="px-6 py-3 bg-green-900 text-white rounded-lg font-semibold hover:bg-green-700 transition-all"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen p-8 bg-cover bg-center bg-fixed bg-no-repeat relative" style={{backgroundImage: "url('/bg.jpg')"}}>
+      <div className="absolute inset-0 bg-white/50 z-0"></div>
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="text-center mb-12 bg-green-900 bg-cover bg-center bg-fixed bg-no-repeat p-6 rounded-2xl shadow-2xl max-w-3xl mx-auto border-2">
+        <div className="flex items-center justify-center mb-4">
+          <img 
+            src='/logo.png' 
+            alt="MyProgram" 
+            className="w-30 h-24 mr-3" 
+          />
+          <h1 className="text-4xl font-bold text-white">MyProgram</h1>
+        </div>
+        <p className="text-white text-lg">
+          Still undecided? Drop your personal interests to match potential programs!
+        </p>
+        <p className="text-white text-sm mt-2">{courses.length} programs available</p>
+      </div>
 
-        <div className={styles.ctas}>
+
+        {/* Input Section */}
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* CARSU WEBSITE - 25% */}
+       <div className="bg-white rounded-2xl shadow-xl p-6 text-white">  
+  {/* Golden Paddler Carousel */}
+  <div className="mb-6">
+        <h2 className="text-2xl font-bold text-green-900 mb-4">Golden Paddlers</h2>
+        <div className="relative overflow-hidden rounded-xl bg-gray-100">
+          <div 
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {images.map((image, index) => (
+              <div key={index} className="min-w-full h-64">
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+          
+          {/* Left Button */}
+          <button 
+            onClick={prevSlide}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all"
+            aria-label="Previous slide"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          {/* Right Button */}
+          <button 
+            onClick={nextSlide}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all"
+            aria-label="Next slide"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          
+          {/* Carousel indicators */}
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  currentSlide === index ? 'bg-white w-8' : 'bg-white/50'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+  
+  <button className="w-full mt-6 bg-green-900 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all">
+    Visit CARSU
+  </button>
+</div>
+
+          {/* INPUT SECTION - 50% */}
+          <div className="lg:col-span-2 bg-white rounded-2xl shadow-2xl p-8 border-2 border-green-900">
+            <h2 className="text-2xl font-bold text-green-900 mb-6 text-center">
+              Drop your interests below!
+            </h2>
+            
+            {keywords.map((keyword, index) => (
+              <div key={index} className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Interest {index + 1}
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={keyword}
+                    onChange={(e) => handleKeywordChange(index, e.target.value)}
+                    placeholder={
+                      index === 0
+                        ? 'e.g., programming'
+                        : index === 1
+                        ? 'e.g., design'
+                        : 'e.g., healthcare'
+                    }
+                    className="w-full px-4 py-3 pr-10 border-2 border-gray-200 rounded-lg text-base focus:outline-none focus:border-green-500 transition-colors"
+                  />
+                  {keyword && (
+                    <button
+                      onClick={() => clearKeyword(index)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 bg-transparent border-0 text-gray-400 cursor-pointer p-0 w-6 h-6 flex items-center justify-center hover:text-gray-600"
+                    >
+                      <X size={20} />
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            <div className="flex gap-3 mt-6">
+              <button
+                onClick={calculateRecommendations}
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-base cursor-pointer transition-all bg-green-900 text-white hover:bg-green-700"
+              >
+                <Search size={20} /> Find Programs
+              </button>
+              <button
+                onClick={handleReset}
+                className="px-6 py-3 rounded-lg font-semibold text-base cursor-pointer transition-all border-2 border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+              >
+                <RefreshCw size={20} />
+              </button>
+            </div>
+          </div>
+
+          {/* ADMISSION WEBSITE - 25% */}
+          <div className="bg-white to-blue-800 rounded-2xl shadow-xl p-6 text-white">
+            <div className="flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-green-900">Quick Updates!</h2>
+            </div>
+                  <div className="space-y-2">
+          <div className="bg-white/80 backdrop-blur-md rounded-xl p-2 shadow-lg border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <h3 className="font-bold text-xl mb-4 text-green-900 flex items-center gap-2">
+              <span className="w-1.5 h-6 bg-gradient-to-b from-green-500 to-green-600 rounded-full"></span>
+              Admission Steps Procedure:
+            </h3>
+    <div className="space-y-3 mb-6">
+  <div className="flex items-start gap-3">
+    <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">1</span>
+    <p className='text-green-900'>Fill out the online application form.</p>
+  </div>
+  <div className="flex items-start gap-3">
+    <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">2</span>
+    <p className='text-green-900'>Submit necessary documents (ID, transcript, certificates).</p>
+  </div>
+  <div className="flex items-start gap-3">
+    <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">3</span>
+    <p className='text-green-900'>Schedule and attend the entrance interview.</p>
+  </div>
+  <div className="flex items-start gap-3">
+    <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">4</span>
+    <p className='text-green-900'>Receive confirmation and enrollment details.</p>
+  </div>
+</div>
+
+          </div>
+            </div>
+           <div className="space-y-5">
+          <div className="bg-white/80 backdrop-blur-md rounded-xl p-6 shadow-lg border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <h3 className="font-bold text-xl mb-4 text-green-900 flex items-center gap-2">
+              <span className="w-1.5 h-6 bg-gradient-to-b from-green-500 to-green-600 rounded-full"></span>
+              CSU Social Media Accounts
+            </h3>
+           <div className="grid grid-cols-3 gap-4 flex justify-center">
+          {/* Facebook */}
           <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
+            className="group flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+            <FaFacebook className="text-white text-3xl" />
           </a>
+
+          {/* Twitter */}
           <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.secondary}
+            className="group flex items-center justify-center w-16 h-16 bg-sky-500 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
           >
-            Read our docs
+            <FaTwitter className="text-white text-3xl" />
+          </a>
+
+          {/* Instagram */}
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-center w-16 h-16 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
+          >
+            <FaInstagram className="text-white text-3xl" />
           </a>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Results Section */}
+        {hasSearched && (
+          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-3xl mx-auto border-2 border-green-900 mt-5">
+            <div className="mb-6">
+              <div className="flex items-center justify-center mb-4">
+                <Sparkles size={24} className="text-green-900 mr-2" />
+                <h2 className="text-2xl font-bold text-gray-800">Recommended Programs</h2>
+              </div>
+            </div>
+
+            {recommendations.length === 0 ? (
+              <div className="text-center py-12 text-gray-500 text-lg">
+                Unfortunately, your interests are still unavailable at both campuses of the
+                university. However, we have {courses.length} programs with different
+                disciplines that you can choose from!
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {recommendations.map((course, index) => (
+                  <div
+                    key={index}
+                    className="relative border-2 border-gray-200 rounded-lg p-6 pt-10 transition-all hover:border-indigo-400 hover:shadow-lg"
+                  >
+                    <div className="absolute top-4 right-4 bg-green-900 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      {course.campusDesc}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2 pr-8">
+                      {course.name}
+                    </h3>
+                    <p className="text-gray-600 mb-3">{course.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {course.keywords.slice(0, 6).map((kw, kwIndex) => (
+                        <span
+                          key={kwIndex}
+                          className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                        >
+                          {kw}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
