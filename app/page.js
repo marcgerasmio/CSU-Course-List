@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { Search, RefreshCw, BookOpen, Sparkles, CheckCircle,  X } from 'lucide-react';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaYoutube, FaInstagram } from 'react-icons/fa';
 
 export default function MyProgramRecommender() {
   const [keywords, setKeywords] = useState(['', '', '']);
@@ -157,7 +157,7 @@ export default function MyProgramRecommender() {
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* CARSU WEBSITE - 25% */}
-       <div className="bg-white rounded-2xl shadow-xl p-6 text-white">  
+       <div className="bg-white rounded-2xl shadow-xl p-6 text-whiteshadow-2xl">  
   {/* Golden Paddler Carousel */}
   <div className="mb-6">
         <h2 className="text-2xl font-bold text-green-900 mb-4">Golden Paddlers</h2>
@@ -214,9 +214,9 @@ export default function MyProgramRecommender() {
           </div>
         </div>
       </div>
-  
-  <button className="w-full mt-6 bg-green-900 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all">
-    Visit CARSU
+
+  <button className="w-full mt-8 bg-green-900 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all" onClick={() => window.open('https://www.carsu.edu.ph', '_blank')}>
+    Visit CaRSU
   </button>
 </div>
 
@@ -278,28 +278,28 @@ export default function MyProgramRecommender() {
             <div className="flex items-center gap-3">
               <h2 className="text-2xl font-bold text-green-900">Quick Updates!</h2>
             </div>
-                  <div className="space-y-2">
-          <div className="bg-white/80 backdrop-blur-md rounded-xl p-2 shadow-lg border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div className="space-y-2">
+          <div className="bg-white/80 backdrop-blur-md rounded-xl p-2 shadow-xl border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <h3 className="font-bold text-xl mb-4 text-green-900 flex items-center gap-2">
               <span className="w-1.5 h-6 bg-gradient-to-b from-green-500 to-green-600 rounded-full"></span>
               Admission Steps Procedure:
             </h3>
-    <div className="space-y-3 mb-6">
+    <div className="space-y-3">
   <div className="flex items-start gap-3">
     <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">1</span>
-    <p className='text-green-900'>Fill out the online application form.</p>
+    <p className='text-green-900'>Secure your slot.</p>
   </div>
   <div className="flex items-start gap-3">
     <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">2</span>
-    <p className='text-green-900'>Submit necessary documents (ID, transcript, certificates).</p>
+    <p className='text-green-900'>Take your entrance examination.</p>
   </div>
   <div className="flex items-start gap-3">
     <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">3</span>
-    <p className='text-green-900'>Schedule and attend the entrance interview.</p>
+    <p className='text-green-900'>After taking the exam, wait for the results.</p>
   </div>
   <div className="flex items-start gap-3">
     <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">4</span>
-    <p className='text-green-900'>Receive confirmation and enrollment details.</p>
+    <p className='text-green-900'>Once you pass the exam, receive confirmation and enrollment details.</p>
   </div>
 </div>
 
@@ -311,35 +311,32 @@ export default function MyProgramRecommender() {
               <span className="w-1.5 h-6 bg-gradient-to-b from-green-500 to-green-600 rounded-full"></span>
               CSU Social Media Accounts
             </h3>
-           <div className="grid grid-cols-3 gap-4 flex justify-center">
+           <div className="flex gap-4">
           {/* Facebook */}
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/CarSUOfficial"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
+            className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
           >
             <FaFacebook className="text-white text-3xl" />
           </a>
-
-          {/* Twitter */}
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-center w-16 h-16 bg-sky-500 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
-          >
-            <FaTwitter className="text-white text-3xl" />
-          </a>
-
           {/* Instagram */}
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/carsuofficial"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-center w-16 h-16 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
+            className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
           >
             <FaInstagram className="text-white text-3xl" />
+          </a>
+              <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
+          >
+            <FaYoutube className="text-white text-3xl" />
           </a>
         </div>
           </div>
@@ -349,9 +346,9 @@ export default function MyProgramRecommender() {
 
         {/* Results Section */}
         {hasSearched && (
-          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-3xl mx-auto border-2 border-green-900 mt-5">
-            <div className="mb-6">
-              <div className="flex items-center justify-center mb-4">
+          <div className="bg-white rounded-2xl shadow-2xl p-4 max-w-3xl mx-auto border-2 border-green-900 mt-5">
+            <div className="">
+              <div className="flex items-center justify-center">
                 <Sparkles size={24} className="text-green-900 mr-2" />
                 <h2 className="text-2xl font-bold text-gray-800">Recommended Programs</h2>
               </div>
