@@ -8,7 +8,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'My App',
+  title: 'CSU - MyProgram',
 };
 
 export default function RootLayout({ children }) {

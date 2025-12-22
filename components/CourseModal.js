@@ -93,18 +93,7 @@ export default function CoursesModal({ isOpen, onClose, courses }) {
             // College name mapping
             const collegeNames = {
               'CHASS': 'College of Humanities and Social Sciences',
-              'COE': 'College of Education',
-              'CAS': 'College of Arts and Sciences',
-              'CICT': 'College of Information and Communications Technology',
-              'CBA': 'College of Business Administration',
-              'COA': 'College of Agriculture',
-              'CAFSD': 'College of Agriculture, Forestry and Sustainable Development',
-              'CTE': 'College of Teacher Education',
-              'CON': 'College of Nursing',
-              'CENG': 'College of Engineering',
-              'CCJE': 'College of Criminal Justice Education',
-              'CHTM': 'College of Hospitality and Tourism Management',
-              'CITHM': 'College of International Tourism and Hospitality Management'
+              'CAA': 'College of Agriculture and Agri-Industries',
             };
             
             const collegeFullName = collegeNames[college] || college;
@@ -115,15 +104,12 @@ export default function CoursesModal({ isOpen, onClose, courses }) {
                   <div className="flex items-center gap-3 mb-2">
                     <Building2 className="text-green-900" size={24} />
                     <h3 className="text-xl font-bold text-green-900">
-                      {college}
+                      {collegeFullName}
                     </h3>
                     <span className="bg-green-900 text-white px-3 py-1 rounded-full text-sm font-semibold">
                       {collegeCourses.length} {collegeCourses.length === 1 ? 'program' : 'programs'}
                     </span>
                   </div>
-                  <p className="text-gray-600 text-sm ml-9 italic">
-                    {collegeFullName}
-                  </p>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

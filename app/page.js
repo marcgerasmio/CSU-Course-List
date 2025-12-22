@@ -313,7 +313,10 @@ Welcome to the university’s MyProgram!
                 </div>
               </div>
             </div>
-            <div className="space-y-5 mt-5">
+              <button className="w-full mt-2 bg-green-900 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all" onClick={() => window.open('https://myadmission.carsu.edu.ph', '_blank')}>
+              Visit MyAdmission
+            </button>
+            <div className="space-y-5">
               <div className="bg-white/80 backdrop-blur-md rounded-xl p-6 shadow-lg border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <h3 className="font-bold text-xl mb-4 text-green-900 flex items-center gap-2">
                   CSU Social Media Accounts
