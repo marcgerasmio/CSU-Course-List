@@ -34,7 +34,7 @@ export default function MyProgramRecommender() {
     setCurrentSlide(index);
   };
 
-  const API_URL = 'https://csu-course-list.vercel.app/api/courses';
+  const API_URL = 'https://csu-myprogram.vercel.app/api/courses';
 
   useEffect(() => {
     fetchCourses();
