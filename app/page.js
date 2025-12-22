@@ -160,7 +160,7 @@ export default function MyProgramRecommender() {
        <div className="bg-white rounded-2xl shadow-xl p-6 text-whiteshadow-2xl">  
   {/* Golden Paddler Carousel */}
   <div className="mb-6">
-        <h2 className="text-2xl font-bold text-green-900 mb-4">Golden Paddlers</h2>
+        <h2 className="text-xl font-bold text-green-900 mb-4">Campus Life, Our Golden Paddlers.</h2>
         <div className="relative overflow-hidden rounded-xl bg-gray-100">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
@@ -276,36 +276,33 @@ export default function MyProgramRecommender() {
           {/* ADMISSION WEBSITE - 25% */}
           <div className="bg-white to-blue-800 rounded-2xl shadow-xl p-6 text-white">
             <div className="flex items-center gap-3">
-              <h2 className="text-2xl font-bold text-green-900">Quick Updates!</h2>
+              <h2 className="text-xl font-bold text-green-900">Admission Test Requirements</h2>
             </div>
-          <div className="space-y-2">
+          <div className="space-y-2 mt-4">
           <div className="bg-white/80 backdrop-blur-md rounded-xl p-2 shadow-xl border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <h3 className="font-bold text-xl mb-4 text-green-900 flex items-center gap-2">
-              <span className="w-1.5 h-6 bg-gradient-to-b from-green-500 to-green-600 rounded-full"></span>
-              Admission Steps Procedure:
-            </h3>
+
     <div className="space-y-3">
   <div className="flex items-start gap-3">
-    <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">1</span>
-    <p className='text-green-900'>Secure your slot.</p>
+    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
+    <p className='text-green-900'>Passport-size ID Picture. NO PICTURE, NO EXAM.</p>
   </div>
   <div className="flex items-start gap-3">
-    <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">2</span>
-    <p className='text-green-900'>Take your entrance examination.</p>
+    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
+    <p className='text-green-900'>Any valid ID</p>
   </div>
   <div className="flex items-start gap-3">
-    <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">3</span>
-    <p className='text-green-900'>After taking the exam, wait for the results.</p>
+    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
+    <p className='text-green-900'>Application Number</p>
   </div>
   <div className="flex items-start gap-3">
-    <span className="flex-shrink-0 w-6 h-6 bg-yellow-400 text-black font-bold rounded-full flex items-center justify-center">4</span>
-    <p className='text-green-900'>Once you pass the exam, receive confirmation and enrollment details.</p>
+    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
+    <p className='text-green-900'>Pencil (Number 2)</p>
   </div>
 </div>
 
           </div>
             </div>
-           <div className="space-y-5">
+           <div className="space-y-5 mt-5">
           <div className="bg-white/80 backdrop-blur-md rounded-xl p-6 shadow-lg border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <h3 className="font-bold text-xl mb-4 text-green-900 flex items-center gap-2">
               <span className="w-1.5 h-6 bg-gradient-to-b from-green-500 to-green-600 rounded-full"></span>
