@@ -1,9 +1,9 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Search, RefreshCw, BookOpen, Sparkles, CheckCircle,  X } from 'lucide-react';
+import { Search, RefreshCw, BookOpen, Sparkles, CheckCircle, X } from 'lucide-react';
 import { FaFacebook, FaYoutube, FaInstagram } from 'react-icons/fa';
+import CoursesModal from '../components/CourseModal';
 
 export default function MyProgramRecommender() {
   const [keywords, setKeywords] = useState(['', '', '']);
@@ -12,8 +12,9 @@ export default function MyProgramRecommender() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hasSearched, setHasSearched] = useState(false);
-    const [currentSlide, setCurrentSlide] = useState(0);
-  
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [showCoursesModal, setShowCoursesModal] = useState(false);
   // Array of images - add as many as you want
   const images = [
     { src: "pic1.webp", alt: "Golden Paddler 1" },
@@ -51,7 +52,7 @@ export default function MyProgramRecommender() {
 
       const data = await response.json();
       if (!data.success || !data.data) throw new Error('Invalid data format from API');
-
+      console.log(data.data);
       setCourses(data.data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch courses');
@@ -73,6 +74,7 @@ export default function MyProgramRecommender() {
     if (filledKeywords.length === 0) {
       setRecommendations([]);
       setHasSearched(true);
+      setShowModal(true);
       return;
     }
 
@@ -95,12 +97,14 @@ export default function MyProgramRecommender() {
 
     setRecommendations(filtered);
     setHasSearched(true);
+    setShowModal(true);
   };
 
   const handleReset = () => {
     setKeywords(['', '', '']);
     setRecommendations([]);
     setHasSearched(false);
+    setShowModal(false);
   };
 
   if (loading)
@@ -109,7 +113,7 @@ export default function MyProgramRecommender() {
         <div className="absolute inset-0 bg-white/85 z-0"></div>
         <div className="relative z-10 text-center py-16 px-8">
           <div className="w-12 h-12 border-4 border-gray-200 border-t-green-900 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600 text-lg">Loading courses...</p>
+          <p className="text-gray-600 text-lg">Fetching courses...</p>
         </div>
       </div>
     );
@@ -138,92 +142,101 @@ export default function MyProgramRecommender() {
       <div className="relative z-10">
         {/* Header */}
         <div className="text-center mb-12 bg-green-900 bg-cover bg-center bg-fixed bg-no-repeat p-6 rounded-2xl shadow-2xl max-w-3xl mx-auto border-2">
-        <div className="flex items-center justify-center mb-4">
-          <img 
-            src='/logo.png' 
-            alt="MyProgram" 
-            className="w-30 h-24 mr-3" 
-          />
-          <h1 className="text-4xl font-bold text-white">MyProgram</h1>
+          <div className="flex items-center justify-center mb-4">
+            <img 
+              src='/logo.png' 
+              alt="MyProgram" 
+              className="w-30 h-24 mr-3" 
+            />
+            <h1 className="text-4xl font-bold text-white">MyProgram</h1>
+          </div>
+          <p className="text-white text-lg mb-4">
+Welcome to the university’s MyProgram! 
+          </p>
+          <p className="text-white text-xs">
+   As an aspiring Golden Paddler this incoming school year, choosing the right academic program is one of your most important decisions. We are here to help.
+          </p>
+          <p className="text-white text-xs">
+   MyProgram matches your unique interests with our available undergraduate programs across both campuses. Share what inspires you, and discover the academic pathways designed for your future.
+          </p>
         </div>
-        <p className="text-white text-lg">
-          Still undecided? Drop your personal interests to match potential programs!
-        </p>
-        <p className="text-white text-sm mt-2">{courses.length} programs available</p>
-      </div>
-
 
         {/* Input Section */}
-
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* CARSU WEBSITE - 25% */}
-       <div className="bg-white rounded-2xl shadow-xl p-6 text-whiteshadow-2xl">  
-  {/* Golden Paddler Carousel */}
-  <div className="mb-6">
-        <h2 className="text-xl font-bold text-green-900 mb-4">Campus Life, Our Golden Paddlers.</h2>
-        <div className="relative overflow-hidden rounded-xl bg-gray-100">
-          <div 
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {images.map((image, index) => (
-              <div key={index} className="min-w-full h-64">
-                <img 
-                  src={image.src} 
-                  alt={image.alt} 
-                  className="w-full h-full object-cover"
-                />
+          <div className="bg-white rounded-2xl shadow-xl p-6 text-whiteshadow-2xl">  
+            {/* Golden Paddler Carousel */}
+            <div className="mb-6">
+              <h2 className="text-xl font-bold text-green-900 mb-4">Campus Life, Our Golden Paddlers.</h2>
+              <div className="relative overflow-hidden rounded-xl bg-gray-100">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {images.map((image, index) => (
+                    <div key={index} className="min-w-full h-64">
+                      <img 
+                        src={image.src} 
+                        alt={image.alt} 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Left Button */}
+                <button 
+                  onClick={prevSlide}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all"
+                  aria-label="Previous slide"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                
+                {/* Right Button */}
+                <button 
+                  onClick={nextSlide}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all"
+                  aria-label="Next slide"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                
+                {/* Carousel indicators */}
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToSlide(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        currentSlide === index ? 'bg-white w-8' : 'bg-white/50'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-          
-          {/* Left Button */}
-          <button 
-            onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all"
-            aria-label="Previous slide"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          
-          {/* Right Button */}
-          <button 
-            onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all"
-            aria-label="Next slide"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-          
-          {/* Carousel indicators */}
-          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  currentSlide === index ? 'bg-white w-8' : 'bg-white/50'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+            </div>
+            <div className='flex items-center gap-4'>
+              <button className="w-full mt-8 bg-yellow-500 text-green-900 font-semibold py-3 rounded-lg hover:bg-yellow-400 transition-all"   onClick={() => setShowCoursesModal(true)}>
+             View Courses
+            </button>
+            <button className="w-full mt-8 bg-green-900 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all" onClick={() => window.open('https://www.carsu.edu.ph', '_blank')}>
+              Visit CaRSU
+            </button>
+            </div>
 
-  <button className="w-full mt-8 bg-green-900 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all" onClick={() => window.open('https://www.carsu.edu.ph', '_blank')}>
-    Visit CaRSU
-  </button>
-</div>
+            
+          </div>
 
           {/* INPUT SECTION - 50% */}
           <div className="lg:col-span-2 bg-white rounded-2xl shadow-2xl p-8 border-2 border-green-900">
             <h2 className="text-2xl font-bold text-green-900 mb-6 text-center">
-              Drop your interests below!
+           Are you ready to find your match?
             </h2>
             
             {keywords.map((keyword, index) => (
@@ -278,116 +291,132 @@ export default function MyProgramRecommender() {
             <div className="flex items-center gap-3">
               <h2 className="text-xl font-bold text-green-900">Admission Test Requirements</h2>
             </div>
-          <div className="space-y-2 mt-4">
-          <div className="bg-white/80 backdrop-blur-md rounded-xl p-2 shadow-xl border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-
-    <div className="space-y-3">
-  <div className="flex items-start gap-3">
-    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
-    <p className='text-green-900'>Passport-size ID Picture. NO PICTURE, NO EXAM.</p>
-  </div>
-  <div className="flex items-start gap-3">
-    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
-    <p className='text-green-900'>Any valid ID</p>
-  </div>
-  <div className="flex items-start gap-3">
-    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
-    <p className='text-green-900'>Application Number</p>
-  </div>
-  <div className="flex items-start gap-3">
-    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
-    <p className='text-green-900'>Pencil (Number 2)</p>
-  </div>
-</div>
-
-          </div>
-            </div>
-           <div className="space-y-5 mt-5">
-          <div className="bg-white/80 backdrop-blur-md rounded-xl p-6 shadow-lg border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <h3 className="font-bold text-xl mb-4 text-green-900 flex items-center gap-2">
-              <span className="w-1.5 h-6 bg-gradient-to-b from-green-500 to-green-600 rounded-full"></span>
-              CSU Social Media Accounts
-            </h3>
-           <div className="flex gap-4">
-          {/* Facebook */}
-          <a
-            href="https://www.facebook.com/CarSUOfficial"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
-          >
-            <FaFacebook className="text-white text-3xl" />
-          </a>
-          {/* Instagram */}
-          <a
-            href="https://www.instagram.com/carsuofficial"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
-          >
-            <FaInstagram className="text-white text-3xl" />
-          </a>
-              <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
-          >
-            <FaYoutube className="text-white text-3xl" />
-          </a>
-        </div>
-          </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Results Section */}
-        {hasSearched && (
-          <div className="bg-white rounded-2xl shadow-2xl p-4 max-w-3xl mx-auto border-2 border-green-900 mt-5">
-            <div className="">
-              <div className="flex items-center justify-center">
-                <Sparkles size={24} className="text-green-900 mr-2" />
-                <h2 className="text-2xl font-bold text-gray-800">Recommended Programs</h2>
-              </div>
-            </div>
-
-            {recommendations.length === 0 ? (
-              <div className="text-center py-12 text-gray-500 text-lg">
-                Unfortunately, your interests are still unavailable at both campuses of the
-                university. However, we have {courses.length} programs with different
-                disciplines that you can choose from!
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {recommendations.map((course, index) => (
-                  <div
-                    key={index}
-                    className="relative border-2 border-gray-200 rounded-lg p-6 pt-10 transition-all hover:border-indigo-400 hover:shadow-lg"
-                  >
-                    <div className="absolute top-4 right-4 bg-green-900 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                      {course.campusDesc}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2 pr-8">
-                      {course.name}
-                    </h3>
-                    <p className="text-gray-600 mb-3">{course.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {course.keywords.slice(0, 6).map((kw, kwIndex) => (
-                        <span
-                          key={kwIndex}
-                          className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
-                        >
-                          {kw}
-                        </span>
-                      ))}
-                    </div>
+            <div className="space-y-2 mt-4">
+              <div className="bg-white/80 backdrop-blur-md rounded-xl p-2 shadow-xl border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
+                    <p className='text-green-900'>Passport-size ID Picture. NO PICTURE, NO EXAM.</p>
                   </div>
-                ))}
+                  <div className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
+                    <p className='text-green-900'>Any valid ID</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
+                    <p className='text-green-900'>Application Number</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-6 h-6 text-black font-bold rounded-full flex items-center justify-center">•</span>
+                    <p className='text-green-900'>Pencil (Number 2)</p>
+                  </div>
+                </div>
               </div>
-            )}
+            </div>
+            <div className="space-y-5 mt-5">
+              <div className="bg-white/80 backdrop-blur-md rounded-xl p-6 shadow-lg border border-green-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <h3 className="font-bold text-xl mb-4 text-green-900 flex items-center gap-2">
+                  CSU Social Media Accounts
+                </h3>
+                <div className="flex gap-4">
+                  {/* Facebook */}
+                  <a
+                    href="https://www.facebook.com/CarSUOfficial"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                  >
+                    <FaFacebook className="text-white text-3xl" />
+                  </a>
+                  {/* Instagram */}
+                  <a
+                    href="https://www.instagram.com/carsuofficial"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                  >
+                    <FaInstagram className="text-white text-3xl" />
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                  >
+                    <FaYoutube className="text-white text-3xl" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Modal for Results */}
+        {showModal && (
+          <div 
+            className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+            onClick={() => setShowModal(false)}
+          >
+            <div 
+              className="bg-white rounded-2xl shadow-2xl p-6 max-w-3xl w-full max-h-[90vh] overflow-y-auto border-2 border-green-900"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center">
+                  <Sparkles size={24} className="text-green-900 mr-2" />
+                  <h2 className="text-2xl font-bold text-gray-800">Recommended Programs</h2>
+                </div>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="text-gray-500 hover:text-gray-700 transition-colors"
+                >
+                  <X size={28} />
+                </button>
+              </div>
+
+              {recommendations.length === 0 ? (
+                <div className="text-center py-12 text-gray-500 text-lg">
+                  Unfortunately, your interests are still unavailable at both campuses of the
+                  university. However, we have {courses.length} programs with different
+                  disciplines that you can choose from!
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {recommendations.map((course, index) => (
+                    <div
+                      key={index}
+                      className="relative border-2 border-gray-200 rounded-lg p-6 pt-10 transition-all hover:border-indigo-400 hover:shadow-lg"
+                    >
+                      <div className="absolute top-4 right-4 bg-green-900 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        {course.campusDesc}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-2 pr-8">
+                        {course.name}
+                      </h3>
+                      <p className="text-gray-600 mb-3">{course.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {course.keywords.slice(0, 6).map((kw, kwIndex) => (
+                          <span
+                            key={kwIndex}
+                            className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                          >
+                            {kw}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
+      <CoursesModal 
+  isOpen={showCoursesModal}
+  onClose={() => setShowCoursesModal(false)}
+  courses={courses}
+/>
     </div>
   );
 }
