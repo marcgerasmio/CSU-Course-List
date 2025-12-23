@@ -7,6 +7,7 @@ const poppins = Poppins({
   variable: '--font-poppins', // optional, for CSS variable usage
 });
 
+
 export const metadata = {
   title: 'CSU - MyProgram',
 };

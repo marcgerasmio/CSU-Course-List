@@ -282,7 +282,7 @@ const coursesDatabase = [
     description: 'The Bachelor of Science in Geology teaches earth-system science, mineralogy, stratigraphy, and applied field methods to understand natural resources and geohazards. Students spend significant time in the field, conducting mapping, sampling, and site investigations, complemented by laboratory mineral analysis and interpretation exercises. Career paths include exploration and mining geology, environmental geology, geological consultancy, hazard assessment, and roles in government resource agencies. The program’s practical, field-oriented training and ties to regional resource studies help graduates transition quickly into industry and research roles.'
   },
   {
-    college: 'CHTM',
+    college: 'CTHM',
     name: 'BACHELOR OF SCIENCE IN HOSPITALITY MANAGEMENT',
     campus: 'CSUCC',
     campusDesc: 'CSU Cabadbaran',

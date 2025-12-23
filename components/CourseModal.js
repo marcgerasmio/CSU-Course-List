@@ -94,6 +94,15 @@ export default function CoursesModal({ isOpen, onClose, courses }) {
             const collegeNames = {
               'CHASS': 'College of Humanities and Social Sciences',
               'CAA': 'College of Agriculture and Agri-Industries',
+              'CEGS': 'College of Engineering and Geo-Sciences',
+              'CED': 'College of Education',
+              'COFES': 'College of Forestry and Environmental Sciences',
+              'CCIS': 'College of Computing and Information Sciences',
+              'CMNS' : 'College of Mathematics and Natural Sciences',
+              'CITTE': 'College of Industrial Technology and Teacher Education',
+              'CBA' : 'College of Business and Accountancy',
+              'CEIT' : 'College of Engineering and Information Technology',
+              'CTHM' : 'College of Tourism and Hospitality Management',
             };
             
             const collegeFullName = collegeNames[college] || college;
