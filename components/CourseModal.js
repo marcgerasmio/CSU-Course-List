@@ -5,6 +5,7 @@ import { X, BookOpen, GraduationCap, Building2 } from 'lucide-react';
 
 export default function CoursesModal({ isOpen, onClose, courses }) {
   const [activeTab, setActiveTab] = useState('Main');
+  const [expandedCourse, setExpandedCourse] = useState(null);
 
   if (!isOpen) return null;
 
@@ -122,34 +123,45 @@ export default function CoursesModal({ isOpen, onClose, courses }) {
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {collegeCourses.map((course, index) => (
-                    <div
-                      key={index}
-                      className="border-2 border-gray-200 rounded-lg p-5 transition-all hover:border-green-500 hover:shadow-lg bg-white"
-                    >
-                      <h4 className="text-lg font-bold text-gray-800 mb-2">
-                        {course.name}
-                      </h4>
-                      <p className="text-gray-600 text-sm mb-3">
-                        {course.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {course.keywords.slice(0, 4).map((kw, kwIndex) => (
-                          <span
-                            key={kwIndex}
-                            className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium"
-                          >
-                            {kw}
-                          </span>
-                        ))}
-                        {course.keywords.length > 4 && (
-                          <span className="text-gray-500 text-xs px-2 py-1">
-                            +{course.keywords.length - 4} more
-                          </span>
+                  {collegeCourses.map((course, index) => {
+                    const courseId = `${college}-${index}`;
+                    const isExpanded = expandedCourse === courseId;
+                    
+                    return (
+                      <div
+                        key={index}
+                        onClick={() => setExpandedCourse(isExpanded ? null : courseId)}
+                        className="border-2 border-gray-200 rounded-lg p-5 transition-all hover:border-green-500 hover:shadow-lg bg-white cursor-pointer"
+                      >
+                        <h4 className="text-lg font-bold text-gray-800 mb-2">
+                          {course.name}
+                        </h4>
+                        <p className={`text-gray-600 text-sm mb-3 ${isExpanded ? '' : 'line-clamp-2'}`}>
+                          {course.description}
+                        </p>
+                        {!isExpanded && course.description.length > 100 && (
+                          <button className="text-green-700 text-xs font-medium mb-3 hover:underline">
+                            Click to read more...
+                          </button>
                         )}
+                        <div className="flex flex-wrap gap-2">
+                          {course.keywords.slice(0, 4).map((kw, kwIndex) => (
+                            <span
+                              key={kwIndex}
+                              className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium"
+                            >
+                              {kw}
+                            </span>
+                          ))}
+                          {course.keywords.length > 4 && (
+                            <span className="text-gray-500 text-xs px-2 py-1">
+                              +{course.keywords.length - 4} more
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             );

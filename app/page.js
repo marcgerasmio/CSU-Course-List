@@ -155,8 +155,6 @@ Welcome to the university’s MyProgram!
           </p>
           <p className="text-white text-xs">
    As an aspiring Golden Paddler this incoming school year, choosing the right academic program is one of your most important decisions. We are here to help.
-          </p>
-          <p className="text-white text-xs">
    MyProgram matches your unique interests with our available undergraduate programs across both campuses. Share what inspires you, and discover the academic pathways designed for your future.
           </p>
         </div>
