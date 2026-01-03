@@ -130,7 +130,7 @@ export default function CoursesModal({ isOpen, onClose, courses }) {
                       <h4 className="text-lg font-bold text-gray-800 mb-2">
                         {course.name}
                       </h4>
-                      <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                      <p className="text-gray-600 text-sm mb-3">
                         {course.description}
                       </p>
                       <div className="flex flex-wrap gap-2">

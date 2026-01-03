@@ -201,14 +201,14 @@ const coursesDatabase = [
     keywords: ['engineering', 'construction', 'buildings', 'infrastructure', 'design', 'structures', 'roads', 'bridges', 'civil', 'planning', 'architecture', 'projects'],
     description: 'The Bachelor of Science in Civil Engineering trains students to design, build, and manage infrastructure, from roads and bridges to water supply and sanitation systems, with an emphasis on safety, sustainability, and community impact. Student experience blends rigorous theory with design studios, structural and materials labs, site inspections, and multi-disciplinary capstone projects that mirror real engineering practice. Graduates find work in consulting firms, government public works, construction management, structural design, and infrastructure planning, locally and internationally. The program is strengthened by faculty involvement in infrastructure research and collaborations that give students exposure to contemporary engineering challenges.'
   },
-  {
-    college: 'CEGS',
-    name: 'BACHELOR OF SCIENCE IN CIVIL ENGINEERING WITH SPECIALIZATION IN STRUCTURAL ENGINEERING',
-    campus: 'MAIN',
-    campusDesc: 'CSU Main',
-    keywords: ['structures', 'engineering', 'buildings', 'design', 'construction', 'civil', 'architecture', 'bridges', 'safety', 'materials', 'structural', 'analysis'],
-    description: 'Design safe and efficient structures'
-  },
+  // {
+  //   college: 'CEGS',
+  //   name: 'BACHELOR OF SCIENCE IN CIVIL ENGINEERING WITH SPECIALIZATION IN STRUCTURAL ENGINEERING',
+  //   campus: 'MAIN',
+  //   campusDesc: 'CSU Main',
+  //   keywords: ['structures', 'engineering', 'buildings', 'design', 'construction', 'civil', 'architecture', 'bridges', 'safety', 'materials', 'structural', 'analysis'],
+  //   description: 'Design safe and efficient structures'
+  // },
   {
     college: 'CEIT',
     name: 'BACHELOR OF SCIENCE IN COMPUTER ENGINEERING',
