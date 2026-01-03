@@ -46,7 +46,7 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['agribusiness', 'business', 'agriculture', 'management', 'farming', 'entrepreneurship', 'marketing', 'economics', 'rural', 'finance', 'trade', 'supply'],
-    description: 'Manage agricultural business operations'
+    description:'The Bachelor of Science in Agriculture program cultivates future leaders in sustainable agriculture. It offers six major specializations: Agronomy, Agricultural Economics, Animal Science, Crop Protection, Horticulture, and Soil Science. The program combines scientific knowledge with ethical, entrepreneurial, and innovative approaches to modern farming. Students gain hands-on experience in production, processing, and agribusiness management while learning to address real-world agricultural challenges through sustainable and technology-driven solutions. Guided by national competency standards, the program produces globally competitive and socially responsible professionals dedicated to advancing food security, environmental stewardship, and rural development for a more sustainable future.'
   },
   
   {
@@ -55,7 +55,7 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['economics', 'agriculture', 'business', 'finance', 'market', 'trade', 'farming', 'rural', 'policy', 'development', 'production', 'analysis'],
-    description: 'Study economic aspects of agriculture'
+    description: 'The Bachelor of Science in Agriculture program cultivates future leaders in sustainable agriculture. It offers six major specializations: Agronomy, Agricultural Economics, Animal Science, Crop Protection, Horticulture, and Soil Science. The program combines scientific knowledge with ethical, entrepreneurial, and innovative approaches to modern farming. Students gain hands-on experience in production, processing, and agribusiness management while learning to address real-world agricultural challenges through sustainable and technology-driven solutions. Guided by national competency standards, the program produces globally competitive and socially responsible professionals dedicated to advancing food security, environmental stewardship, and rural development for a more sustainable future.'
   },
   {
     college: 'CAA',
@@ -63,7 +63,7 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['crops', 'plants', 'farming', 'agriculture', 'soil', 'cultivation', 'seeds', 'harvest', 'production', 'field', 'growth', 'yield'],
-    description: 'Focus on crop production and soil management'
+    description: 'The Bachelor of Science in Agriculture program cultivates future leaders in sustainable agriculture. It offers six major specializations: Agronomy, Agricultural Economics, Animal Science, Crop Protection, Horticulture, and Soil Science. The program combines scientific knowledge with ethical, entrepreneurial, and innovative approaches to modern farming. Students gain hands-on experience in production, processing, and agribusiness management while learning to address real-world agricultural challenges through sustainable and technology-driven solutions. Guided by national competency standards, the program produces globally competitive and socially responsible professionals dedicated to advancing food security, environmental stewardship, and rural development for a more sustainable future.'
   },
   {
     college: 'CAA',
@@ -71,7 +71,7 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['animals', 'livestock', 'farming', 'veterinary', 'cattle', 'poultry', 'breeding', 'nutrition', 'husbandry', 'meat', 'dairy', 'genetics'],
-    description: 'Study animal production and livestock management'
+    description: 'The Bachelor of Science in Agriculture program cultivates future leaders in sustainable agriculture. It offers six major specializations: Agronomy, Agricultural Economics, Animal Science, Crop Protection, Horticulture, and Soil Science. The program combines scientific knowledge with ethical, entrepreneurial, and innovative approaches to modern farming. Students gain hands-on experience in production, processing, and agribusiness management while learning to address real-world agricultural challenges through sustainable and technology-driven solutions. Guided by national competency standards, the program produces globally competitive and socially responsible professionals dedicated to advancing food security, environmental stewardship, and rural development for a more sustainable future.'
   },
   {
     college: 'CAA',
@@ -79,7 +79,7 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['crops', 'pests', 'diseases', 'protection', 'agriculture', 'pesticides', 'farming', 'plants', 'prevention', 'control', 'harvest', 'safety'],
-    description: 'Protect crops from pests and diseases'
+    description: 'The Bachelor of Science in Agriculture program cultivates future leaders in sustainable agriculture. It offers six major specializations: Agronomy, Agricultural Economics, Animal Science, Crop Protection, Horticulture, and Soil Science. The program combines scientific knowledge with ethical, entrepreneurial, and innovative approaches to modern farming. Students gain hands-on experience in production, processing, and agribusiness management while learning to address real-world agricultural challenges through sustainable and technology-driven solutions. Guided by national competency standards, the program produces globally competitive and socially responsible professionals dedicated to advancing food security, environmental stewardship, and rural development for a more sustainable future.'
   },
   {
     college: 'CAA',
@@ -87,7 +87,7 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['plants', 'gardens', 'horticulture', 'vegetables', 'fruits', 'flowers', 'landscaping', 'cultivation', 'nursery', 'greenhouse', 'ornamental', 'growing'],
-    description: 'Cultivate fruits, vegetables, and ornamental plants'
+    description:'The Bachelor of Science in Agriculture program cultivates future leaders in sustainable agriculture. It offers six major specializations: Agronomy, Agricultural Economics, Animal Science, Crop Protection, Horticulture, and Soil Science. The program combines scientific knowledge with ethical, entrepreneurial, and innovative approaches to modern farming. Students gain hands-on experience in production, processing, and agribusiness management while learning to address real-world agricultural challenges through sustainable and technology-driven solutions. Guided by national competency standards, the program produces globally competitive and socially responsible professionals dedicated to advancing food security, environmental stewardship, and rural development for a more sustainable future.'
   },
   {
     college: 'CAA',
@@ -95,7 +95,7 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['soil', 'agriculture', 'earth', 'fertility', 'nutrients', 'farming', 'crops', 'geology', 'analysis', 'chemistry', 'conservation', 'land'],
-    description: 'Study soil properties and management'
+    description: 'The Bachelor of Science in Agriculture program cultivates future leaders in sustainable agriculture. It offers six major specializations: Agronomy, Agricultural Economics, Animal Science, Crop Protection, Horticulture, and Soil Science. The program combines scientific knowledge with ethical, entrepreneurial, and innovative approaches to modern farming. Students gain hands-on experience in production, processing, and agribusiness management while learning to address real-world agricultural challenges through sustainable and technology-driven solutions. Guided by national competency standards, the program produces globally competitive and socially responsible professionals dedicated to advancing food security, environmental stewardship, and rural development for a more sustainable future.'
   },
   {
     college: 'COFES',
@@ -127,7 +127,7 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['biodiversity', 'conservation', 'environment', 'species', 'ecology', 'wildlife', 'nature', 'protection', 'endangered', 'habitat', 'ecosystem', 'sustainability'],
-    description: 'Conserve and protect biological diversity'
+    description: 'The Bachelor of Science in Biology offers a comprehensive and dynamic education that caters to the growing demand for Biology students and professionals in the Caraga Region and beyond. The program provides students with extensive hands-on learning experiences in both field and laboratory settings, nurturing scientific inquiry, research competence, and a strong appreciation for the life sciences. It offers four major tracks: Biodiversity and Conservation, Medical Biology, Microbiology, and Plant Biology, allowing students to specialize according to their interests and career aspirations. Graduates pursue diverse career paths in research, education, healthcare, biotechnology, environmental management, and conservation. Students actively engage in research projects, field surveys, and professional training that prepare them for global competitiveness. The program has also recently celebrated the success of its Registered Microbiologist (RMicro) passers, highlighting the excellence and distinction of CSU’s Biology education.'
   },
   {
     college: 'CMNS',
@@ -135,7 +135,7 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['insects', 'bugs', 'entomology', 'biology', 'pests', 'ecology', 'species', 'research', 'larvae', 'beetles', 'butterflies', 'study'],
-    description: 'Study insects and their behavior'
+    description: 'The Bachelor of Science in Biology offers a comprehensive and dynamic education that caters to the growing demand for Biology students and professionals in the Caraga Region and beyond. The program provides students with extensive hands-on learning experiences in both field and laboratory settings, nurturing scientific inquiry, research competence, and a strong appreciation for the life sciences. It offers four major tracks: Biodiversity and Conservation, Medical Biology, Microbiology, and Plant Biology, allowing students to specialize according to their interests and career aspirations. Graduates pursue diverse career paths in research, education, healthcare, biotechnology, environmental management, and conservation. Students actively engage in research projects, field surveys, and professional training that prepare them for global competitiveness. The program has also recently celebrated the success of its Registered Microbiologist (RMicro) passers, highlighting the excellence and distinction of CSU’s Biology education.'
   },
   {
     college: 'CMNS',
@@ -143,7 +143,8 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['medical', 'biology', 'health', 'disease', 'laboratory', 'research', 'clinical', 'medicine', 'cells', 'diagnosis', 'human', 'healthcare'],
-    description: 'Apply biology to medical and health fields'
+    description: 'The Bachelor of Science in Biology offers a comprehensive and dynamic education that caters to the growing demand for Biology students and professionals in the Caraga Region and beyond. The program provides students with extensive hands-on learning experiences in both field and laboratory settings, nurturing scientific inquiry, research competence, and a strong appreciation for the life sciences. It offers four major tracks: Biodiversity and Conservation, Medical Biology, Microbiology, and Plant Biology, allowing students to specialize according to their interests and career aspirations. Graduates pursue diverse career paths in research, education, healthcare, biotechnology, environmental management, and conservation. Students actively engage in research projects, field surveys, and professional training that prepare them for global competitiveness. The program has also recently celebrated the success of its Registered Microbiologist (RMicro) passers, highlighting the excellence and distinction of CSU’s Biology education.'
+  
   },
   {
     college: 'CMNS',
@@ -151,7 +152,8 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['microorganisms', 'bacteria', 'virus', 'biology', 'laboratory', 'microbes', 'germs', 'research', 'cells', 'pathogens', 'microbiology', 'health'],
-    description: 'Study microorganisms and their effects'
+    description: 'The Bachelor of Science in Biology offers a comprehensive and dynamic education that caters to the growing demand for Biology students and professionals in the Caraga Region and beyond. The program provides students with extensive hands-on learning experiences in both field and laboratory settings, nurturing scientific inquiry, research competence, and a strong appreciation for the life sciences. It offers four major tracks: Biodiversity and Conservation, Medical Biology, Microbiology, and Plant Biology, allowing students to specialize according to their interests and career aspirations. Graduates pursue diverse career paths in research, education, healthcare, biotechnology, environmental management, and conservation. Students actively engage in research projects, field surveys, and professional training that prepare them for global competitiveness. The program has also recently celebrated the success of its Registered Microbiologist (RMicro) passers, highlighting the excellence and distinction of CSU’s Biology education.'
+
   },
   {
     college: 'CMNS',
@@ -159,7 +161,8 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['plants', 'botany', 'biology', 'photosynthesis', 'agriculture', 'ecology', 'growth', 'species', 'research', 'nature', 'vegetation', 'cells'],
-    description: 'Study plant life and botanical sciences'
+    description: 'The Bachelor of Science in Biology offers a comprehensive and dynamic education that caters to the growing demand for Biology students and professionals in the Caraga Region and beyond. The program provides students with extensive hands-on learning experiences in both field and laboratory settings, nurturing scientific inquiry, research competence, and a strong appreciation for the life sciences. It offers four major tracks: Biodiversity and Conservation, Medical Biology, Microbiology, and Plant Biology, allowing students to specialize according to their interests and career aspirations. Graduates pursue diverse career paths in research, education, healthcare, biotechnology, environmental management, and conservation. Students actively engage in research projects, field surveys, and professional training that prepare them for global competitiveness. The program has also recently celebrated the success of its Registered Microbiologist (RMicro) passers, highlighting the excellence and distinction of CSU’s Biology education.'
+
   },
   {
     college: 'CBA',
@@ -455,7 +458,8 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['teaching', 'English', 'education', 'language', 'literature', 'grammar', 'secondary', 'high school', 'students', 'writing', 'reading', 'communication'],
-    description: 'Teach English at secondary level'
+       description: 'The Bachelor of Elementary Education program is designed to prepare its students to become competent, upright, and service-oriented elementary school teachers. This program is Level IV Re-Accredited by AACCUP, a mark of excellence in instruction, research, and community engagement. Students enjoy a dynamic learning experience enriched by expert faculty, hands-on teaching practice, and a supportive academic environment. Graduates of the program are highly sought-after, with career opportunities in both public and private schools, local and international educational institutions, and community-based learning programs. The program proudly celebrates six LEPT topnotchers, a Top 9 national ranking in the recent Licensure Exam for Professional Teachers, and the prestigious EQUATE Award from CHED, a testament to its commitment to quality and innovation in teacher education.'
+
   },
   {
     college: 'CED',
@@ -463,7 +467,8 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['teaching', 'Filipino', 'education', 'language', 'culture', 'secondary', 'high school', 'students', 'literature', 'writing', 'native', 'panitikan'],
-    description: 'Teach Filipino language and culture'
+     description: 'The Bachelor of Elementary Education program is designed to prepare its students to become competent, upright, and service-oriented elementary school teachers. This program is Level IV Re-Accredited by AACCUP, a mark of excellence in instruction, research, and community engagement. Students enjoy a dynamic learning experience enriched by expert faculty, hands-on teaching practice, and a supportive academic environment. Graduates of the program are highly sought-after, with career opportunities in both public and private schools, local and international educational institutions, and community-based learning programs. The program proudly celebrates six LEPT topnotchers, a Top 9 national ranking in the recent Licensure Exam for Professional Teachers, and the prestigious EQUATE Award from CHED, a testament to its commitment to quality and innovation in teacher education.'
+
   },
   {
     college: 'CED',
@@ -471,7 +476,8 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['teaching', 'mathematics', 'education', 'math', 'numbers', 'secondary', 'high school', 'students', 'algebra', 'geometry', 'calculus', 'problem-solving'],
-    description: 'Teach mathematics at secondary level'
+     description: 'The Bachelor of Elementary Education program is designed to prepare its students to become competent, upright, and service-oriented elementary school teachers. This program is Level IV Re-Accredited by AACCUP, a mark of excellence in instruction, research, and community engagement. Students enjoy a dynamic learning experience enriched by expert faculty, hands-on teaching practice, and a supportive academic environment. Graduates of the program are highly sought-after, with career opportunities in both public and private schools, local and international educational institutions, and community-based learning programs. The program proudly celebrates six LEPT topnotchers, a Top 9 national ranking in the recent Licensure Exam for Professional Teachers, and the prestigious EQUATE Award from CHED, a testament to its commitment to quality and innovation in teacher education.'
+
   },
   {
     college: 'CED',
@@ -479,7 +485,8 @@ const coursesDatabase = [
     campus: 'MAIN',
     campusDesc: 'CSU Main',
     keywords: ['teaching', 'science', 'education', 'secondary', 'high school', 'students', 'biology', 'chemistry', 'physics', 'laboratory', 'experiments', 'research'],
-    description: 'Teach science subjects at secondary level'
+    description: 'The Bachelor of Elementary Education program is designed to prepare its students to become competent, upright, and service-oriented elementary school teachers. This program is Level IV Re-Accredited by AACCUP, a mark of excellence in instruction, research, and community engagement. Students enjoy a dynamic learning experience enriched by expert faculty, hands-on teaching practice, and a supportive academic environment. Graduates of the program are highly sought-after, with career opportunities in both public and private schools, local and international educational institutions, and community-based learning programs. The program proudly celebrates six LEPT topnotchers, a Top 9 national ranking in the recent Licensure Exam for Professional Teachers, and the prestigious EQUATE Award from CHED, a testament to its commitment to quality and innovation in teacher education.'
+
   },
   {
     college: 'CITTE',
