@@ -170,7 +170,7 @@ const coursesDatabase = [
     campus: 'CSUCC',
     campusDesc: 'CSU Cabadbaran',
     keywords: ['finance', 'business', 'management', 'investment', 'money', 'accounting', 'banking', 'economics', 'budget', 'financial', 'assets', 'analysis'],
-    description: 'Manage financial resources and investments'
+    description: 'The Bachelor of Science in Business Administration major in Financial Management equips students with the knowledge and technical skills essential for careers in corporate finance, banking, investment, and other financial sectors. It emphasizes the study of financial institutions, analytical tools, and decision-making methodologies grounded in sound financial theories. The curriculum also fosters ethical responsibility, market integrity, good governance, and a globally competitive mindset vital for effective financial management and leadership.'
   },
   {
     college: 'CBA',
@@ -178,7 +178,7 @@ const coursesDatabase = [
     campus: 'CSUCC',
     campusDesc: 'CSU Cabadbaran',
     keywords: ['human resources', 'HR', 'people', 'management', 'recruitment', 'employees', 'business', 'training', 'workforce', 'personnel', 'hiring', 'development'],
-    description: 'Manage employee relations and workforce'
+    description: 'The Bachelor of Science in Business Administration major in Human Resource Management prepares students for careers in managing an organization’s human capital. It focuses on developing competencies in recruitment, staffing, training, employee relations, and career development. The program equips graduates with the skills and ethical grounding needed to effectively manage people and foster organizational growth and productivity.'
   },
   {
     college: 'CBA',
@@ -186,7 +186,7 @@ const coursesDatabase = [
     campus: 'CSUCC',
     campusDesc: 'CSU Cabadbaran',
     keywords: ['marketing', 'business', 'advertising', 'sales', 'branding', 'promotion', 'strategy', 'consumer', 'management', 'digital', 'market', 'campaigns'],
-    description: 'Develop marketing strategies and campaigns'
+    description: 'The Bachelor of Science in Business Administration major in Marketing Management  prepares students for careers in marketing, advertising, market research, and public relations. It develops technical skills and strategic thinking essential for analyzing markets and promoting products effectively. The program also cultivates adaptability and creativity, enabling graduates to thrive in dynamic and competitive business environments.'
   },
   {
     college: 'CMNS',
