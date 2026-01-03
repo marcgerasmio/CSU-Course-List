@@ -2,8 +2,63 @@
 
 import { useState, useEffect } from 'react';
 import { Search, RefreshCw, BookOpen, Sparkles, CheckCircle, X } from 'lucide-react';
-import { FaFacebook, FaYoutube, FaInstagram } from 'react-icons/fa';
-import CoursesModal from '../components/CourseModal';
+
+// Courses Modal Component
+function CoursesModal({ isOpen, onClose, courses }) {
+  if (!isOpen) return null;
+
+  return (
+    <div 
+      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div 
+        className="bg-white rounded-2xl shadow-2xl p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto border-2 border-green-900"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center">
+            <BookOpen size={24} className="text-green-900 mr-2" />
+            <h2 className="text-2xl font-bold text-gray-800">All Available Courses</h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 transition-colors"
+          >
+            <X size={28} />
+          </button>
+        </div>
+
+        <div className="space-y-4">
+          {courses.map((course, index) => (
+            <div
+              key={index}
+              className="relative border-2 border-gray-200 rounded-lg p-6 pt-10 transition-all hover:border-green-400 hover:shadow-lg"
+            >
+              <div className="absolute top-4 right-4 bg-green-900 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                {course.campusDesc}
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 pr-8">
+                {course.name}
+              </h3>
+              <p className="text-gray-600 mb-3">{course.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {course.keywords.slice(0, 6).map((kw, kwIndex) => (
+                  <span
+                    key={kwIndex}
+                    className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                  >
+                    {kw}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function MyProgramRecommender() {
   const [keywords, setKeywords] = useState(['', '', '']);
@@ -15,6 +70,7 @@ export default function MyProgramRecommender() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [showCoursesModal, setShowCoursesModal] = useState(false);
+  
   // Array of images - add as many as you want
   const images = [
     { src: "pic1.webp", alt: "Golden Paddler 1" },
@@ -151,18 +207,18 @@ export default function MyProgramRecommender() {
             <h1 className="text-4xl font-bold text-white">MyProgram</h1>
           </div>
           <p className="text-white text-lg mb-4">
-Welcome to the university’s MyProgram! 
+            Welcome to the university's MyProgram! 
           </p>
           <p className="text-white text-xs">
-   As an aspiring Golden Paddler this incoming school year, choosing the right academic program is one of your most important decisions. We are here to help.
-   MyProgram matches your unique interests with our available undergraduate programs across both campuses. Share what inspires you, and discover the academic pathways designed for your future.
+            As an aspiring Golden Paddler this incoming school year, choosing the right academic program is one of your most important decisions. We are here to help.
+            MyProgram matches your unique interests with our available undergraduate programs across both campuses. Share what inspires you, and discover the academic pathways designed for your future.
           </p>
         </div>
 
         {/* Input Section */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* CARSU WEBSITE - 25% */}
-          <div className="bg-white rounded-2xl shadow-xl p-6 text-whiteshadow-2xl">  
+          {/* CARSU WEBSITE - 25% - Order last on mobile */}
+          <div className="bg-white rounded-2xl shadow-xl p-6 text-whiteshadow-2xl order-3 lg:order-1">  
             {/* Golden Paddler Carousel */}
             <div className="mb-6">
               <h2 className="text-xl font-bold text-green-900 mb-4">Campus Life, Our Golden Paddlers.</h2>
@@ -220,21 +276,19 @@ Welcome to the university’s MyProgram!
               </div>
             </div>
             <div className='flex items-center gap-4'>
-              <button className="w-full mt-8 bg-yellow-500 text-green-900 font-semibold py-3 rounded-lg hover:bg-yellow-400 transition-all"   onClick={() => setShowCoursesModal(true)}>
-             View Courses
-            </button>
-            <button className="w-full mt-8 bg-green-900 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all" onClick={() => window.open('https://www.carsu.edu.ph', '_blank')}>
-              Visit CaRSU
-            </button>
+              <button className="w-full mt-8 bg-yellow-500 text-green-900 font-semibold py-3 rounded-lg hover:bg-yellow-400 transition-all" onClick={() => setShowCoursesModal(true)}>
+                View Courses
+              </button>
+              <button className="w-full mt-8 bg-green-900 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all" onClick={() => window.open('https://www.carsu.edu.ph', '_blank')}>
+                Visit CaRSU
+              </button>
             </div>
-
-            
           </div>
 
-          {/* INPUT SECTION - 50% */}
-          <div className="lg:col-span-2 bg-white rounded-2xl shadow-2xl p-8 border-2 border-green-900">
+          {/* INPUT SECTION - 50% - Order first on mobile */}
+          <div className="lg:col-span-2 bg-white rounded-2xl shadow-2xl p-8 border-2 border-green-900 order-1 lg:order-2">
             <h2 className="text-2xl font-bold text-green-900 mb-6 text-center">
-           Are you ready to find your match?
+              Are you ready to find your match?
             </h2>
             
             {keywords.map((keyword, index) => (
@@ -284,8 +338,8 @@ Welcome to the university’s MyProgram!
             </div>
           </div>
 
-          {/* ADMISSION WEBSITE - 25% */}
-          <div className="bg-white to-blue-800 rounded-2xl shadow-xl p-6 text-white">
+          {/* ADMISSION WEBSITE - 25% - Order second on mobile */}
+          <div className="bg-white to-blue-800 rounded-2xl shadow-xl p-6 text-white order-2 lg:order-3">
             <div className="flex items-center gap-3">
               <h2 className="text-xl font-bold text-green-900">Admission Test Requirements</h2>
             </div>
@@ -311,7 +365,7 @@ Welcome to the university’s MyProgram!
                 </div>
               </div>
             </div>
-              <button className="w-full mt-2 bg-green-900 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all" onClick={() => window.open('https://myadmission.carsu.edu.ph', '_blank')}>
+            <button className="w-full mt-2 bg-green-900 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition-all" onClick={() => window.open('https://myadmission.carsu.edu.ph', '_blank')}>
               Visit MyAdmission
             </button>
             <div className="space-y-5">
@@ -327,7 +381,9 @@ Welcome to the university’s MyProgram!
                     rel="noopener noreferrer"
                     className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
                   >
-                    <FaFacebook className="text-white text-3xl" />
+                    <svg className="text-white text-3xl w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
                   </a>
                   {/* Instagram */}
                   <a
@@ -336,15 +392,20 @@ Welcome to the university’s MyProgram!
                     rel="noopener noreferrer"
                     className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
                   >
-                    <FaInstagram className="text-white text-3xl" />
+                    <svg className="text-white text-3xl w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
                   </a>
+                  {/* YouTube */}
                   <a
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center justify-center w-16 h-16 bg-green-900 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
                   >
-                    <FaYoutube className="text-white text-3xl" />
+                    <svg className="text-white text-3xl w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
                   </a>
                 </div>
               </div>
@@ -414,10 +475,10 @@ Welcome to the university’s MyProgram!
         )}
       </div>
       <CoursesModal 
-  isOpen={showCoursesModal}
-  onClose={() => setShowCoursesModal(false)}
-  courses={courses}
-/>
+        isOpen={showCoursesModal}
+        onClose={() => setShowCoursesModal(false)}
+        courses={courses}
+      />
     </div>
   );
 }
