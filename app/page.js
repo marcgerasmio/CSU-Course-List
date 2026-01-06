@@ -18,7 +18,7 @@ export default function MyProgramRecommender() {
   const [expandedCourse, setExpandedCourse] = useState(null);
   const [activeCampusTab, setActiveCampusTab] = useState('Main');
   
-  // Array of images - add as many as you want
+
   const images = [
     { src: "pic1.webp", alt: "Golden Paddler 1" },
     { src: "pic2.webp", alt: "Golden Paddler 2" },

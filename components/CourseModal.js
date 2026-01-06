@@ -9,7 +9,7 @@ export default function CoursesModal({ isOpen, onClose, courses }) {
 
   if (!isOpen) return null;
 
-  // Group courses by campus first, then by college
+
   const coursesByCampus = courses.reduce((acc, course) => {
     const campus = course.campusDesc || 'Other';
     if (!acc[campus]) {
