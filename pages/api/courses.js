@@ -568,14 +568,6 @@ description: 'The Bachelor of Secondary Education (BSEd) program of Caraga State
     keywords: ['teaching', 'industrial', 'arts', 'education', 'crafts', 'technical', 'workshop', 'hands-on', 'livelihood', 'skills', 'students', 'practical'],
     description: 'The Bachelor of Technology and Livelihood Education major in Industrial Arts is a four-year degree program designed to prepare future teachers to competently deliver TLE subjects in Junior High School and Industrial Arts in Senior High School, aligned with the K to 12 Basic Education Curriculum. Guided by CHED CMO No. 78, s. 2017, the curriculum combines theoretical understanding, practical technical training, and values formation. It aims to develop educators who are skilled in woodworking, drafting, electricity, metalwork, and other industrial competencies, ensuring they are capable of fostering learners’ technical and vocational skills in a modern educational setting.'
   },
-  {
-    college: 'CED',
-    name: 'TEACHERS CERTIFICATE PROGRAM',
-    campus: 'MAIN',
-    campusDesc: 'CSU Main',
-    keywords: ['teaching', 'education', 'certificate', 'training', 'professional', 'classroom', 'students', 'pedagogy', 'instructor', 'license', 'qualification', 'educators'],
-    description: 'Obtain teaching certification and credentials'
-  }
 ];
 
 export default function handler(req, res) {
